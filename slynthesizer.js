@@ -2,6 +2,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const urlStartTime = urlParams.get('at');
 const urlGameId = urlParams.get('game');
+const urlSpeed = urlParams.get('speed');
 
 var firstTime = true;
 
@@ -10,7 +11,15 @@ if (urlGameId !==null)
 {
 	gameId = urlGameId;
 }
-var updateTime = 1; //seconds, will control synth beats but also should control game updates 
+var updateTime; //seconds, will control synth beats but also should control game updates 
+if (urlSpeed !==null)
+{
+	updateTime = speed2Time(urlSpeed);
+}
+else
+{
+	updateTime = speed2Time(document.getElementById('speedSlider').value);
+}
 var updateTimeFudged = updateTime;
 var updateGamesListFlag = true;
 var curseMultiplier = 1;
@@ -74,10 +83,8 @@ this.volumeGrabber.addEventListener('change', (event) => {
 	Tone.getDestination().volume.rampTo(volTemp, 0);
 });
 this.speedGrabber.addEventListener('change', (event) => {
-	if (event.target.value==7)	//gotta be == since event value is a string
-		{updateTime=0.5;}
-	else
-		{updateTime = 7-event.target.value;}
+	
+	updateTime = speed2Time(event.target.value);
 	
 	if (self.updateRateGrabber.checked)
 		{updateTimeFudged = updateTime/3;}
@@ -100,7 +107,10 @@ this.volumeGrabber.addEventListener('change', (event) => {
 });
 var eventTemp = new Event('change');
 volumeGrabber.dispatchEvent(eventTemp);
+speedGrabber.value = time2Speed(updateTime);
+var eventTemp = new Event('change');
 speedGrabber.dispatchEvent(eventTemp);
+
 // this.gameGrabber.addEventListener('change', (event) => {
 //
 // 	self.gameId = event.target.value;
@@ -568,6 +578,22 @@ function replaceQueryParam(param, newval, search) {
     var query = search.replace(regex, "$1").replace(/&$/, '');
 
     return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+}
+function speed2Time(speed)
+{
+	if (speed==7)
+		{return 0.5;}
+	else
+		{return 7-speed;}
+	
+}
+function time2Speed(time)
+{
+	if (time==0.5)
+		{return 7;}
+	else
+		{return 7-time;}
+	
 }
 // const bell = new Tone.MetalSynth({
 // 			harmonicity: 12,
