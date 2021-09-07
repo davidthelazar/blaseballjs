@@ -1,0 +1,40 @@
+#titleContent{
+	font-family: "Lora";
+    text-align: center;
+	margin: 20px 0;
+    font-size: 32px;
+    font-weight: 700;
+	color:#fff
+}
+#mainContent{
+	font-family: "Lora";
+    text-align: left;
+	margin: 20px 0;
+    font-size: 16px;
+    font-weight: 700;
+	color:#ffffff;
+	line-height:1.6
+}
+a:link, a:visited {
+    color: yellow;
+	background-color: transparent;
+	text-decoration: underline;
+}
+#mainContentHeader{
+	font-family: "Lora";
+    text-align: left;
+	margin: 20px 0;
+    font-size: 24px;
+    font-weight: 700;
+	color:#ffffff;
+	line-height:1.6
+}
+#startButton{
+	
+}
+#startTime{
+	
+}
+#gamesOptions{
+	
+}
