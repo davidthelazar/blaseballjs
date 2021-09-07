@@ -70,34 +70,37 @@ function findSnapshotById(snapshots,id)
 function compareSnapshots(snap1,snap2)
 {
 	for (const property in snap1) {
-		if (property=='basesOccupied')
-		{	
-			if (snap1[property].length !== snap2[property].length)
-				{return false;}
-			if (snap1[property].length !==0)
-			{
-				for (var idx=0;idx<snap1[property].length;idx++)
-				{
-					if(!snap2[property].includes(snap1[property][idx]))
-					{
-						return false;
-					}
-				}
-				// snap1.forEach(item=>{if(snap2[property].includes(item){return false;})})
-				// for (item in snap1[property])
-				// {
-				// 	
-				// 	{
-				// 		return false;
-				// 	}
-				// }
-			}
-		}
-		else
+		if (property!=='data')
 		{
-			if (snap1[property] !== snap2[property])
+			if (property=='basesOccupied')
+			{	
+				if (snap1[property].length !== snap2[property].length)
+					{return false;}
+				if (snap1[property].length !==0)
+				{
+					for (var idx=0;idx<snap1[property].length;idx++)
+					{
+						if(!snap2[property].includes(snap1[property][idx]))
+						{
+							return false;
+						}
+					}
+					// snap1.forEach(item=>{if(snap2[property].includes(item){return false;})})
+					// for (item in snap1[property])
+					// {
+					// 	
+					// 	{
+					// 		return false;
+					// 	}
+					// }
+				}
+			}
+			else
 			{
-				return false;
+				if (snap1[property] !== snap2[property])
+				{
+					return false;
+				}
 			}
 		}
   }
