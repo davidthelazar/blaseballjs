@@ -38,3 +38,15 @@ a:link, a:visited {
 #gamesOptions{
 	
 }
+body {background-color: black; color: rgb(216, 216, 216);font-family: "Lora";}
+.light-mode {background-color: white; color: rgb(65, 65, 65);}
+.button {margin: 10pt; display:inline-block; box-shadow: none;}
+#lighttoggle{float: right;}
+.icon{font-size: 12pt; margin: 10pt; display:inline-block;}
+#gameinput{float: left;}
+@media (hover: hover) {#lighttoggle:hover{color: yellow;}}
+svg.game {position: relative;}
+.visible {visibility: visible;}
+.hidden {visibility: hidden;}
+div.game {position: relative; display: inline-block; margin: 10pt; text-align: left;}
+#container {text-align: center;}
